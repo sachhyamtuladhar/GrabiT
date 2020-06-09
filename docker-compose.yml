@@ -7,10 +7,11 @@ services:
             - "27017:27017"
             
     server:
-        container_name: hamrobazar-server
+        container_name: grabit-server
         restart: always
         build: ./server
         volumes: 
+            - ./app/node_modules
             - ./server:/app
         links: 
             - mongodb

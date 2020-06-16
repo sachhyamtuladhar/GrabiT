@@ -14,7 +14,7 @@ app.use(userRouter)
 
 
 app.get('/login', (req,res)=>{
-    res.json({title: "Logged in"})
+    res.json({title: "Log in"})
 })
 
 app.get('', (req,res)=>{

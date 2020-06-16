@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-import LoginForm from '../components/LoginForm/LoginForm'
+import SignupForm from '../components/SignupForm/SignupForm'
 
 
 class Login extends Component {
@@ -27,16 +27,16 @@ class Login extends Component {
 
     render() {
         return (
-            <div className ="row mt-5">
-                <div className ="col-sm-4"></div>
+            <div className="row mt-5">
+                <div className="col-sm-4"></div>
 
-                <div className ='card col-sm-4 mx-5' >
-                        <div className ="card-body">
-                            <LoginForm title={this.state.title} />
+                <div className='card col-sm-4 mx-5' >
+                        <div className="card-body">
+                            <SignupForm title={this.state.title} />
                         </div>
                 </div>
 
-                <div className ="col-sm-4"></div>
+                <div className="col-sm-4"></div>
 
             </div>
         )

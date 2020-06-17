@@ -1,46 +1,27 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React from 'react'
 
 import SignupForm from '../components/SignupForm/SignupForm'
 
 
-class Login extends Component {
-    state = {
-        error: false,
-        title: 'hello'
-    }
+const signUp = props => {
+   
 
-
-    componentDidMount(){
-        axios.get('/login')
-            .then(res=>{
-                this.setState({
-                    title: res.data.title
-                })
-                this.checkPurchasable(res.data)
-            }).catch(error=>{
-                this.setState({
-                    error: true
-                })
-            })
-    }
-
-    render() {
+   
         return (
             <div className="row mt-5">
-                <div className="col-sm-4"></div>
+                <div className="col-md-2 col-lg-4"></div>
 
-                <div className='card col-sm-4 mx-5' >
+                <div className='card col-md-6 col-lg-4 mx-5' >
                         <div className="card-body">
-                            <SignupForm title={this.state.title} />
+                            <SignupForm title="Register" />
                         </div>
                 </div>
 
-                <div className="col-sm-4"></div>
+                <div className="col-md-2"></div>
 
             </div>
         )
-    }
+    
 }
 
-export default Login
+export default signUp

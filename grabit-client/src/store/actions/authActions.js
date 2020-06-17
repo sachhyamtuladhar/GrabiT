@@ -29,12 +29,12 @@ export const loadUser = () => (dispatch, getState) =>{
     
     // if token, add to headers
         // config.header['Authorization'] = 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWU4ZWM5ZWQyZDFiODM4ZmMyNzYyMDAiLCJpYXQiOjE1OTIzMjMyMzAsImV4cCI6MTU5MjQ5NjAzMH0.glColW90HJZYM0PaxcPqioGOIMiWV3PvP6h6deNT0Bc'
-    axios.defaults.headers.common = {'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWU4ZWM5ZWQyZDFiODM4ZmMyNzYyMDAiLCJpYXQiOjE1OTIzMjUzMDQsImV4cCI6MTU5MjQ5ODEwNH0.Adwk-Vrpb5JsNpW562i_OyI2OKwatsQlHCzlOdQQKC8"}
+    if(token)
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
 
-    axios.get('/users/me', config.header)
+    axios.get('/users/me', config)
         .then(
             res=>{
-                console.log(['LOAD USER:'], res)
                 dispatch({
                     type: USER_LOADED,
                     payload: res

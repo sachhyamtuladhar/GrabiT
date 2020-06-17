@@ -42,6 +42,7 @@ router.get('/users/me', auth , async (req, res)=>{
 
 // signup
 router.post('/users', async (req,res)=>{
+    console.log(req.body)
     const user = new User(req.body)
     try{
         await user.save()

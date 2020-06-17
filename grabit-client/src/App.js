@@ -26,7 +26,7 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             <Layout>
-              <Route path="/login" component={Login}/>
+              <Route path="/login" exact component={Login}/>
               <Route path="/register" exact component={SignUp} />
               <Route path="/" exact component={Home} />
   

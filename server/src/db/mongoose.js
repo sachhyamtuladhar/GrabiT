@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/GrabIt',{
+mongoose.connect('mongodb://mongodb:27017/GrabIt',{
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true

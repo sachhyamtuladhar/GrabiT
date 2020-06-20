@@ -17,6 +17,7 @@ import { NavLink } from 'react-router-dom'
 
 
 import styles from './Navbar.module.scss'
+import Logo from '../Logo/Logo';
 
 const Example = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,8 +26,8 @@ const Example = (props) => {
 
   return (
     <div>
-      <Navbar className={styles.Navbar}  expand="md">
-        <NavbarBrand href="/">Home</NavbarBrand>
+      <Navbar className={`${styles.Navbar} px-0`}  expand="md">
+        <NavbarBrand href="/"><Logo /></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>

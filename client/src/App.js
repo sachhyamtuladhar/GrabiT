@@ -12,7 +12,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import store from './store/store'
 import Layout from './hoc/Layout';
 
+
 import {loadUser} from './store/actions/authActions'
+import HeaderSection from './components/HeaderSection/HeaderSection';
+
+
 
 class App extends Component {
 
@@ -23,8 +27,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div className="App">
+          <div className="App" >
             <Layout>
+              <HeaderSection />
               <Route path="/login" exact component={Login}/>
               <Route path="/register" exact component={SignUp} />
               <Route path="/" exact component={Home} />

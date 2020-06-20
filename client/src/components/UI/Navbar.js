@@ -6,13 +6,17 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+
+import { NavLink } from 'react-router-dom'
+
+
+import styles from './Navbar.module.scss'
 
 const Example = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,16 +25,16 @@ const Example = (props) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+      <Navbar className={styles.Navbar}  expand="md">
+        <NavbarBrand href="/">Home</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink activeClassName={styles.active} to="/components/">Components</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              <NavLink activeClassName={styles.active} to="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -50,7 +54,18 @@ const Example = (props) => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
+          <NavbarText>
+            <NavLink activeClassName={styles.active} 
+              to='/login'
+            >
+              Login
+            </NavLink>
+            <NavLink activeClassName={styles.active} 
+              to='/register'
+            >
+              Signup
+            </NavLink>
+            </NavbarText>
         </Collapse>
       </Navbar>
     </div>

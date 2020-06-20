@@ -1,0 +1,21 @@
+.Navbar{
+    background-color: #034482;
+    color: white !important;
+    a{
+        color: white !important;
+        display: inline-block;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+        font-size: 1.15rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+}
+
+.active{
+   border-bottom: 2px solid white;
+   font-weight: bold;
+}

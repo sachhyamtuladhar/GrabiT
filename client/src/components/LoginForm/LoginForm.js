@@ -1,17 +1,22 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {
-    Container, Col, Form,
-    FormGroup, Label,
-    Button,
+     Form,
+   
   } from 'reactstrap';
 import axios from 'axios'
 
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 import * as actionCreators from '../../store/actions/authActions'
 
 import CustomInput from '../UI/Input/Input'
+import Button from '../UI/Button/Button'
+import styles from './LoginForm.module.scss'
 
 class LoginForm extends Component {
     state={
@@ -19,28 +24,35 @@ class LoginForm extends Component {
             email: {
                 title:"Email",
                 id: "email",
-                type: 'email',
-                placeholder: 'Your E-Mail',
+                config: {
+                    type: 'email',
+                    placeholder: 'Enter Your Email Address',
+                },
+                value: '',
                 validation: {
                     required: true,
                     minLength: 5
                 },
                 validity: false,
-                value: '',
-                touched: false
+                touched: false,
+                login: true
             },
             password: {
                 title:"Password",
                 id: "password",
-                type: 'password',
-                placeholder: 'Your E-Mail',
+                config:{
+                    type: 'password',
+                    placeholder: 'Password',
+                },
+                value: '',
                 validation: {
                     required: true,
                     minLength: 5
                 },
                 validity: false,
-                value: '',
-                touched: false
+                touched: false,
+                login: true
+
             }
         },
         formIsValid: false,
@@ -132,34 +144,38 @@ class LoginForm extends Component {
 
         const formFields = Object.keys(this.state.loginForm).map(
             (inp)=>(
-                <Col key={this.state.loginForm[inp].title}>
-                    <FormGroup>
-                    <Label>{this.state.loginForm[inp].title}</Label>
-                    <CustomInput
-                        type={this.state.loginForm[inp].type}
-                        name={this.state.loginForm[inp].name}
-                        id={this.state.loginForm[inp].id}
-                        placeholder={this.state.loginForm[inp].placeholder}
-
-                        invalid={!this.state.loginForm[inp].validity}
-                        touched={this.state.loginForm[inp].touched}
-
-                       
-                        changeHandler={(e)=>this.inputChangeHandler(e, inp)}
-                    />
-                    </FormGroup>
-                </Col>
+                    <div className="d-flex d-flex py-1 px-2">
+                        <FontAwesomeIcon icon={faUser} className="d-flex  justify-content-center align-self-center ml-2" />
+                        <CustomInput
+                            inputtype="input"
+                            key={this.state.loginForm[inp].title}
+                           
+                            name={this.state.loginForm[inp].name}
+                            id={this.state.loginForm[inp].id}
+                            config={this.state.loginForm[inp].config}
+                            login={this.state.loginForm[inp].login}
+    
+                            invalid={!this.state.loginForm[inp].validity}
+                            touched={this.state.loginForm[inp].touched}
+    
+                           
+                            changeHandler={(e)=>this.inputChangeHandler(e, inp)}
+                        />
+                    </div >
+                  
             )
         )
 
         return (      
-            <Container className="App">
-                <h2>Log in</h2>
                 <Form className="form">
-                    {formFields}
-                <Button onClick={this.submitHandler}>Submit</Button>
+                    <div className="d-flex flex-column">
+                        <div className="shadow  mb-5 bg-white rounded p-0">
+                            {formFields}
+                        </div>
+                        <Button onClick={this.submitHandler} type="Login">Login</Button>
+                        <Link className={styles.ForgotLink}>Forgot Password?</Link>
+                    </div>
                 </Form>
-            </Container>
         )
     }
 }

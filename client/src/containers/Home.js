@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 
 import { connect } from 'react-redux'
 
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import * as actionCreators from '../store/actions/authActions'
 
@@ -18,20 +18,7 @@ class Home extends Component {
         if(this.props.user && this.props.user.data)
             console.log(this.props.user.data.name)
         let home = (
-            <Fragment>
-                <Link 
-                    to='/login'
-                    className="btn btn-success"
-                    >
-                    Login
-                </Link>
-                <Link 
-                    to='/register'
-                    className="btn btn-success"
-                    >
-                    Signup
-                </Link>
-            </Fragment>
+            <h4>Login to continue</h4>
         )
         
         if(this.props.user && this.props.user.data)
@@ -46,7 +33,7 @@ class Home extends Component {
 
 
         return (
-            <div className="d-flex mt-5 justify-content-around">
+            <div className="d-flex mt-5 justify-content-around align-items-center">
                 {home}
             </div>)
         

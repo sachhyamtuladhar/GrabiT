@@ -27,7 +27,10 @@ const Example = (props) => {
   const classes = [styles.Navbar, 'px-0']
 
   // if(props.sticky)
-    classes.push(styles.sticky)
+  classes.push(styles.sticky)
+
+  if(props.isVisible)
+  classes.push(styles.isVisible)
 
   return (
     <div>

@@ -17,15 +17,29 @@ import HeaderSection from './components/HeaderSection/HeaderSection';
 
 
 class App extends Component {
+  state={
+    showNavBar: false
+  }
 
-
-
+  componentDidMount(){
+    window.addEventListener("scroll", (e)=>{
+      let hs = document.querySelector('#headerSection')
+      if(window.scrollY > hs.offsetHeight )
+        this.setState({
+          showNavBar: true
+        })
+      else
+        this.setState({
+          showNavBar: false
+        })
+    });
+  }
 
   render(){
     return (
      
           <div className="App" >
-            <Layout>
+            <Layout showNavBar= {this.state.showNavBar}>
               <HeaderSection />
               <Route path="/login" exact component={Login}/>
               <Route path="/register" exact component={SignUp} />

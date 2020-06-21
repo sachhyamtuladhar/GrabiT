@@ -17,9 +17,23 @@ const headerStyle = {
 }
 
 
+
+let scrollCheck = el => {
+    var rect = el.getBoundingClientRect();
+    var elemTop = rect.top;
+    var elemBottom = rect.bottom;
+
+    // Only completely visible elements return true:
+    var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+    // Partially visible elements return true:
+    //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+    return isVisible;
+}
+
 const HeaderSection = (props) => {
     let loginButtons = null
-    console.log(props.location.pathname)
+
+    
     if(props.location.pathname == '/' && !props.user)
         loginButtons = (<div>
             <Link
@@ -28,14 +42,14 @@ const HeaderSection = (props) => {
                 <Button type="HeaderSection">Login</Button>
             </Link>
             <Link
-                to= "/login"   
+                to= "/register"   
             >
                 <Button type="HeaderSection">Register</Button>
             </Link>
         </div>)
 
     return (
-        <div style={headerStyle} className="d-flex justify-content-around align-items-center">
+        <div style={headerStyle} className="d-flex justify-content-around align-items-center" id="headerSection">
             <div className="d-flex flex-column ">
                 
                 <h3>Just GrabiT!</h3>

@@ -9,7 +9,7 @@ import * as actionCreators from '../store/actions/authActions'
 class Home extends Component {
 
     componentDidMount(){
-        console.log('did mount')
+
         this.props.loadUser()
     }
     
@@ -33,7 +33,7 @@ class Home extends Component {
 
 
         return (
-            <div className="d-flex mt-5 justify-content-around align-items-center" style={{height: '20rem'}}>
+            <div className="d-flex mt-5 justify-content-around align-items-center" style={{height: '50rem'}}>
                 {home}
             </div>)
         

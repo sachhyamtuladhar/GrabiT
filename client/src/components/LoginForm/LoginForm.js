@@ -63,7 +63,7 @@ class LoginForm extends Component {
         this.setState({
             loading: true
         })
-        console.log('[submit hnandler called]')
+ 
 
         e.preventDefault()
 
@@ -77,7 +77,7 @@ class LoginForm extends Component {
 
         axios.post('/users/login', formData)
             .then(res=>{
-                console.log(res)
+
                 this.setState({
                     loading: false,
                     purchasing: false

@@ -167,7 +167,7 @@ class LoginForm extends Component {
         )
 
         return (      
-                <Form className="form">
+                <Form className="form mb-5">
                     <div className="d-flex flex-column">
                         <div className="shadow  mb-5 bg-white rounded p-0">
                             {formFields}

@@ -1,6 +1,9 @@
+@import '../../../scss/colors.scss';
+
 .Navbar{
-    background-color: #034482;
+    background-color:  $primaryColor;
     color: white !important;
+
     a{
         color: white !important;
         display: inline-block;
@@ -11,6 +14,11 @@
         font-size: 1.15rem;
         line-height: inherit;
         white-space: nowrap;
+    }
+
+    &.sticky{
+        position: fixed;
+        width: 100%;
     }
 
 }

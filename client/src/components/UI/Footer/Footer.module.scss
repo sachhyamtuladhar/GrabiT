@@ -1,0 +1,71 @@
+@import '../../../scss/colors.scss';
+
+.Footer{
+    background-image: linear-gradient(#333,#000);
+}
+
+.footerNav, .socialLinks {
+    list-style: none;
+    font-size: 1.1rem;
+    padding-left: 0;
+}
+
+.socialLinks{
+    font-size: 1.1rem;
+}
+
+
+.footerNav li, .socialLinks li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footerNav li:last-child, 
+.socialLinks li:last-child{
+    margin-right: 0px;
+}
+
+.footerNav li a:link,
+.footerNav li a:visited, 
+.socialLinks li a:link,
+.socialLinks li a:visited {
+    text-decoration: none;
+    border: 0;
+    color: #999;
+    
+    transition: color 0.3s;
+}
+
+
+
+.footerNav li a:hover,
+.footerNav li a:active,
+.socialLinks li a:hover,
+.socialLinks li a:active {
+    color: #ddd;
+}
+
+
+
+footer p{
+    color: #888;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.socialMedia{
+    display: inline-block;
+}
+
+.icon{
+    color: $primaryColor;
+    font-size: 1.3rem;
+    margin-right: .5rem;
+    margin-bottom: -0.1rem;
+
+    &:hover{
+        color: $primaryColorLight
+    }
+}

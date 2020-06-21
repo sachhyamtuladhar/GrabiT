@@ -1,3 +1,5 @@
+@import '../../../scss/colors.scss';
+
 .Button {
     background-color: transparent;
     border: none;
@@ -37,7 +39,7 @@
 
 .Login{
     color: white;
-    background: linear-gradient(90deg, #116bc3 33%, #6ba3d6 100%);
+    background: linear-gradient(90deg, $primaryColorLight 33%, $accentColor 100%);
     width: 100%;
     border-radius: .5rem;
     padding: 0.8rem;
@@ -45,4 +47,25 @@
     margin: 0;
     text-align: center;
     display: block;
+
+    
+}
+
+.HeaderSection{
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 30px;
+    font-weight: 300;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: $secondaryColor;
+    color: #ddd;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 1.2rem;
+
+    &:hover{
+        background-color: $secondaryColorLight;
+        color: #fff;
+        transition: background-color 0.3s, color 0.3s;
+    }
 }

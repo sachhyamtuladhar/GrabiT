@@ -33,7 +33,7 @@ class Home extends Component {
 
 
         return (
-            <div className="d-flex mt-5 justify-content-around align-items-center">
+            <div className="d-flex mt-5 justify-content-around align-items-center" style={{height: '20rem'}}>
                 {home}
             </div>)
         

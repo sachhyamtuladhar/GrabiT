@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { Provider } from 'react-redux'
 
-import { BrowserRouter, Route } from 'react-router-dom'
+import {  Route } from 'react-router-dom'
 
 
 import Login from './containers/Login'
@@ -9,7 +8,6 @@ import Home from './containers/Home'
 import SignUp from './containers/SignUp'
 
 import 'bootstrap/dist/css/bootstrap.css';
-import store from './store/store'
 import Layout from './hoc/Layout';
 
 
@@ -25,8 +23,7 @@ class App extends Component {
 
   render(){
     return (
-      <Provider store={store}>
-        <BrowserRouter>
+     
           <div className="App" >
             <Layout>
               <HeaderSection />
@@ -35,8 +32,7 @@ class App extends Component {
               <Route path="/" exact component={Home} />
             </Layout>
           </div>
-        </BrowserRouter>
-      </Provider>
+        
     );
 
   }

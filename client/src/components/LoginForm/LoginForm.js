@@ -63,6 +63,7 @@ class LoginForm extends Component {
         this.setState({
             loading: true
         })
+        console.log('[submit hnandler called]')
 
         e.preventDefault()
 
@@ -144,11 +145,11 @@ class LoginForm extends Component {
 
         const formFields = Object.keys(this.state.loginForm).map(
             (inp)=>(
-                    <div className="d-flex d-flex py-1 px-2">
+                    <div className="d-flex d-flex py-1 px-2" key={this.state.loginForm[inp].title}>
                         <FontAwesomeIcon icon={faUser} className="d-flex  justify-content-center align-self-center ml-2" />
                         <CustomInput
                             inputtype="input"
-                            key={this.state.loginForm[inp].title}
+                            
                            
                             name={this.state.loginForm[inp].name}
                             id={this.state.loginForm[inp].id}
@@ -172,8 +173,8 @@ class LoginForm extends Component {
                         <div className="shadow  mb-5 bg-white rounded p-0">
                             {formFields}
                         </div>
-                        <Button onClick={this.submitHandler} type="Login">Login</Button>
-                        <Link className={styles.ForgotLink}>Forgot Password?</Link>
+                        <Button click={this.submitHandler} type="Login">Login</Button>
+                        <Link to="/forgot" className={styles.ForgotLink}>Forgot Password?</Link>
                     </div>
                 </Form>
         )

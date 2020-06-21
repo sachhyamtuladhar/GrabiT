@@ -4,6 +4,9 @@ import Button  from '../UI/Button/Button';
 
 import {withRouter, Link} from 'react-router-dom'
 
+import { connect } from 'react-redux'
+
+
 const headerStyle = {
     width: '100%',
     height: '20rem',
@@ -17,7 +20,7 @@ const headerStyle = {
 const HeaderSection = (props) => {
     let loginButtons = null
     console.log(props.location.pathname)
-    if(props.location.pathname == '/')
+    if(props.location.pathname == '/' && !props.user)
         loginButtons = (<div>
             <Link
                 to= "/login"   
@@ -44,4 +47,10 @@ const HeaderSection = (props) => {
     )
 }
 
-export default withRouter(HeaderSection)
+const mapStatetoProps = state => {
+    return{
+        user: state.auth.user,
+    }
+}
+
+export default  withRouter(connect(mapStatetoProps)(HeaderSection))

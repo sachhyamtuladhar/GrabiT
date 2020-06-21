@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 
 const headerStyle = {
     width: '100%',
-    height: '20rem',
+    height: '25rem',
     backgroundImage: `url(${HeaderImage})`,
     backgroundPosition: 'bottom',
     backgroundSize: 'cover',

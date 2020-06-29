@@ -1,57 +1,58 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
-import { NavLink } from 'react-router-dom'
 
-import * as actionCreators from '../store/actions/authActions'
+
+// import * as actionCreators from '../store/actions/authActions'
 
 class Home extends Component {
 
     componentDidMount(){
 
-        this.props.loadUser()
+        // this.props.loadUser()
     }
     
 
     render() {
-        if(this.props.user && this.props.user.data)
-            console.log(this.props.user.data.name)
-        let home = (
-            <h4>Login to continue</h4>
-        )
+        // if(this.props.user && this.props.user.data)
+        //     console.log(this.props.user.data.name)
+        // let home = (
+        //     <h4>Login to continue</h4>
+        // )
         
-        if(this.props.user && this.props.user.data)
-            home = (
-                <Fragment>
-                    <h1>Welcome {this.props.user.data.name }</h1>
-                    <div className = "btn btn-danger" onClick={this.props.onLogout}>Logout</div>        
-                </Fragment>
-            )
+        // if(this.props.user && this.props.user.data)
+        //     home = (
+        //         <Fragment>
+        //             <h1>Welcome {this.props.user.data.name }</h1>
+        //             <div className = "btn btn-danger" onClick={this.props.onLogout}>Logout</div>        
+        //         </Fragment>
+        //     )
 
 
 
 
         return (
-            <div className="d-flex mt-5 justify-content-around align-items-center" style={{height: '50rem'}}>
-                {home}
+            <div className="d-flex mt-5" style={{height: "1000px"}}>
+                
             </div>)
         
     }
 }
 
-const mapStatetoProps = state => {
-    return{
-        user: state.auth.user,
-    }
-}
+// const mapStatetoProps = state => {
+//     return{
+//         user: state.auth.user,
+//     }
+// }
 
-const mapDispatchtoProps = dispatch => {
-    return {
-        loadUser: () => dispatch(actionCreators.loadUser()),
-        onLogout: () => dispatch(actionCreators.logOut()),
-    }
-}
+// const mapDispatchtoProps = dispatch => {
+//     return {
+//         loadUser: () => dispatch(actionCreators.loadUser()),
+//         onLogout: () => dispatch(actionCreators.logOut()),
+//     }
+// }
 
 
-export default connect(mapStatetoProps, mapDispatchtoProps)(Home)
+// export default connect(mapStatetoProps, mapDispatchtoProps)(Home)
+export default Home

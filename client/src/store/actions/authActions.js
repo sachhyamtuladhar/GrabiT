@@ -1,21 +1,38 @@
 import axios from 'axios'
 
-import { 
-    USER_LOADING,
-    USER_LOADED,
-    AUTH_ERROR,
-    LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    LOGOUT_SUCCESS,
-    REGISTER_SUCCESS,
-    REGISTER_FAIL 
-} from "./actions";
+import * as actionTypes from "./actionTypes";
 
 import { returnErrors } from "./errorActions";
 
+export const loadStart = () => {
+    return { 
+        type: actionTypes.USER_LOADING 
+    }
+}
+
+
+export const logoutSuccess = ()  => {
+    return {
+        type: actionTypes.LOGOUT_SUCCESS,
+    }
+}
+export const authFail = (e)  => {
+    return {
+        type: actionTypes.AUTH_ERROR,
+        payload: e
+    }
+}
+
+export const userLoaded = (res) => {
+    return {
+        type: actionTypes.USER_LOADED,
+        payload: res
+    }
+}
+
 export const loadUser = () => (dispatch, getState) =>{
     // User loading
-    dispatch({ type: USER_LOADING })
+    dispatch(loadStart())
 
     // get token from local storage 
     const token = getState().auth.token;
@@ -35,18 +52,12 @@ export const loadUser = () => (dispatch, getState) =>{
         axios.get('/users/me', config)
             .then(
                 res=>{
-                    dispatch({
-                        type: USER_LOADED,
-                        payload: res
-                    })
+                    dispatch(userLoaded(res.data))
                 }
             ).catch(e=>{
                 console.log(e)
                 dispatch(returnErrors(e.response.data, e.response.status))
-                dispatch({
-                    type: AUTH_ERROR,
-                    payload: e
-                })
+                dispatch(authFail(e))
             })
     }
 
@@ -55,7 +66,7 @@ export const loadUser = () => (dispatch, getState) =>{
 
 export const storeToken = (token, user) => {
     return {
-        type: REGISTER_SUCCESS,
+        type: actionTypes.REGISTER_SUCCESS,
         payload: {
             token,
             user
@@ -83,18 +94,12 @@ export const logOut = () => (dispatch, getState) =>{
         axios.post('/users/logout', config)
             .then(
                 res=>{
-                    dispatch({
-                        type: LOGOUT_SUCCESS,
-                        
-                    })
+                    dispatch(logoutSuccess())
                 }
             ).catch(e=>{
                 console.log(e)
                 dispatch(returnErrors(e.response.data, e.response.status))
-                dispatch({
-                    type: AUTH_ERROR,
-                    payload: e
-                })
+                dispatch(authFail(e))
             })
     }
     

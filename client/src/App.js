@@ -11,7 +11,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Layout from './hoc/Layout';
 
 
-import {loadUser} from './store/actions/authActions'
 import HeaderSection from './components/HeaderSection/HeaderSection';
 
 

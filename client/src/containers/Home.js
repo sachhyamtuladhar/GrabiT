@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Homepage from '../components/Homepage/homepage'
 
 // import { connect } from 'react-redux'
 
@@ -33,8 +34,8 @@ class Home extends Component {
 
 
         return (
-            <div className="d-flex mt-5" style={{height: "1000px"}}>
-                
+            <div className="mt-3">
+                <Homepage />
             </div>)
         
     }

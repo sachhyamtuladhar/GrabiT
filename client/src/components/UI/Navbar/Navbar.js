@@ -47,8 +47,9 @@ class Example extends Component {
     // if(props.sticky)
     classes.push(styles.sticky)
 
-    if(this.props.isVisible)
-    classes.push(styles.isVisible)
+    if(this.props.showNav)
+      classes.push(styles.isVisible)
+
 
     let navText =
       (<NavbarText>
@@ -67,7 +68,7 @@ class Example extends Component {
       if(this.props.user)
         navText =
           (<NavbarText>
-            <ul style={{listStyle: 'none'}}>
+            <ul className={styles.userDropdown}>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   <h5 className="d-inline mr-2">Welcome {this.props.user.name}!</h5>
@@ -126,6 +127,7 @@ class Example extends Component {
 const mapStatetoProps = state => {
   return{
       user: state.auth.user,
+      showNav: state.ui.showNavbar
   }
 }
 

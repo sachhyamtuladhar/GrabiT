@@ -1,20 +1,16 @@
 import React from 'react'
-import HeaderImage from '../../assets/background2.jpg';
 import Button  from '../UI/Button/Button';
 
-import {withRouter, Link} from 'react-router-dom'
+import { Waypoint } from 'react-waypoint';
+import { withRouter, Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 
+import styles from './HeaderSection.module.scss'
+import * as actions from '../../store/actions/index'
 
-const headerStyle = {
-    width: '100%',
-    height: '25rem',
-    backgroundImage: `url(${HeaderImage})`,
-    backgroundPosition: 'bottom',
-    backgroundSize: 'cover',
-    color: 'white'
-}
+
+
 
 
 
@@ -23,36 +19,47 @@ const HeaderSection = (props) => {
 
     
     if(props.location.pathname === '/' && !props.user)
-        loginButtons = (<div>
+        loginButtons = (<div className="d-flex">
             <Link
-                to= "/login"   
-            >
+                to= "/login" 
+                className={styles.defaultLink}  
+                >
                 <Button type="HeaderSection">Login</Button>
             </Link>
             <Link
                 to= "/register"   
+                className={styles.defaultLink}  
             >
                 <Button type="HeaderSection">Register</Button>
             </Link>
         </div>)
 
     return (
-        <div style={headerStyle} className="d-flex justify-content-around align-items-center" id="headerSection">
-            <div className="d-flex flex-column ">
-                
-                <h3>Just GrabiT!</h3>
-                {loginButtons}
-                
+        <Waypoint onEnter={props.onEnter} onLeave={props.onLeave}>
+            <div className={` ${styles.headerStyle} d-flex justify-content-around align-items-center`} id="headerSection">
+                <div className="d-flex flex-column">
+                    
+                    <h1>Just GrabiT!</h1>
+                    {loginButtons}
+                    
+                </div>
+                <div />
             </div>
-            <div />
-        </div>
+        </Waypoint>
     )
 }
 
 const mapStatetoProps = state => {
     return{
-        user: state.auth.user,
+        user: state.auth.user
     }
 }
 
-export default  withRouter(connect(mapStatetoProps)(HeaderSection))
+const mapDispatchtoProps = dispatch => {
+    return {
+        onLeave: ()=>dispatch(actions.showNavbar()),
+        onEnter: ()=>dispatch(actions.hideNavbar())
+    }
+}
+
+export default  withRouter(connect(mapStatetoProps, mapDispatchtoProps)(HeaderSection))

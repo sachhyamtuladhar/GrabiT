@@ -17,6 +17,9 @@
 
     }
 
+ 
+
+
     a{
         color: white !important;
         display: inline-block;
@@ -39,4 +42,10 @@
 .active{
    border-bottom: 2px solid white;
    font-weight: bold;
+}
+
+
+.userDropdown{
+    list-style: none; 
+    margin-bottom: 0;
 }

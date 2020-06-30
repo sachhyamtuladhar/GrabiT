@@ -1,5 +1,5 @@
 import React from 'react'
-import grabitLogo from '../../assets/logo/Grabit3-transparent.png'
+import grabitLogo from '../../assets/logo/grabit5-transparent.png'
 import styles from './Logo.module.scss'
 
 const logo = () => {

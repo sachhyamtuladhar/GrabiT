@@ -35,11 +35,11 @@ const HeaderSection = (props) => {
         </div>)
 
     return (
-        <Waypoint onEnter={props.onEnter} onLeave={props.onLeave}>
+        <Waypoint onEnter={props.onEnter} onLeave={props.onLeave} topOffset="15%">
             <div className={` ${styles.headerStyle} d-flex justify-content-around align-items-center`} id="headerSection">
                 <div className="d-flex flex-column">
                     
-                    <h1>Just GrabiT!</h1>
+                    <h1 className="text-center">Just GrabiT!</h1>
                     {loginButtons}
                     
                 </div>

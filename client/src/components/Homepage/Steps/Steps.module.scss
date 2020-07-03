@@ -3,18 +3,25 @@
 .StepBox{
 
     &:first-child{
-        text-align:right;
         margin-top: 30px;
         display: flex;
         justify-content: flex-end;
         padding-right: 8vw;
+        
+        
     }
-
+    
     &:last-child{
         position: relative;
         padding-left: 2vw;
         margin-top: 8rem;
         padding-right: 5vw; 
+    }
+}
+
+@media (max-width: 768px) {
+    .StepBox:first-child{
+        justify-content: center;
     }
 }
 

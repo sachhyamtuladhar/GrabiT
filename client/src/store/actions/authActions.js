@@ -16,12 +16,47 @@ export const logoutSuccess = ()  => {
         type: actionTypes.LOGOUT_SUCCESS,
     }
 }
-export const authFail = (e)  => {
+
+export const authStart = ()  => {
     return {
-        type: actionTypes.AUTH_ERROR,
-        payload: e
+        type: actionTypes.AUTH_START,
     }
 }
+
+export const authFail = (error)  => {
+    return {
+        type: actionTypes.AUTH_ERROR,
+        error
+    }
+}
+
+export const loginFail = (error)  => {
+    return {
+        type: actionTypes.LOGIN_FAIL,
+        error
+    }
+}
+
+export const loginSuccess = (token, user)  => {
+    return {
+        type: actionTypes.LOGIN_SUCCESS,
+        payload: {
+            token,
+            user
+        }
+    }
+}
+
+export const signupSuccess = (token, user)  => {
+    return {
+        type: actionTypes.REGISTER_SUCCESS,
+        payload: {
+            token,
+            user
+        }
+    }
+}
+
 
 export const userLoaded = (res) => {
     return {
@@ -32,13 +67,13 @@ export const userLoaded = (res) => {
 
 export const loadUser = () => (dispatch, getState) =>{
     // User loading
-    dispatch(loadStart())
-
+    
     // get token from local storage 
     const token = getState().auth.token;
-
+    
     // if token, add to headers
     if(token){
+        dispatch(loadStart())
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         // config.header['Authorization'] = 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWU4ZWM5ZWQyZDFiODM4ZmMyNzYyMDAiLCJpYXQiOjE1OTIzMjMyMzAsImV4cCI6MTU5MjQ5NjAzMH0.glColW90HJZYM0PaxcPqioGOIMiWV3PvP6h6deNT0Bc'
         
@@ -98,10 +133,37 @@ export const logOut = () => (dispatch, getState) =>{
                 }
             ).catch(e=>{
                 console.log(e)
-                dispatch(returnErrors(e.response.data, e.response.status))
                 dispatch(authFail(e))
             })
     }
     
 }
 
+export const login = (history, formData) => (dispatch, getState) => {
+    dispatch(authStart())
+    axios.post('/users/login', formData)
+        .then(res=>{
+
+            dispatch(loginSuccess(res.data.token, res.data.user))
+            history.push('/')
+        })
+        .catch(e=>{
+            console.log('error:', e.response.data)
+            dispatch(loginFail( e.response.data))
+        })
+}
+
+
+export const signup = (history, formData) => (dispatch, getState) => {
+    dispatch(authStart())
+    axios.post('/users', formData)
+        .then(res=>{
+
+            dispatch(signupSuccess(res.data.token, res.data.user))
+            history.push('/')
+        })
+        .catch(e=>{
+            console.log('error:', e.response.data)
+            dispatch(loginFail( e.response.data))
+        })
+}

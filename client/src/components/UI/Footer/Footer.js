@@ -28,7 +28,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="d-flex  justify-content-center">
-                <p>Copyright &copy; 2020 by GrabiT!. All rights belongs to GrabiT!</p>
+                <p>Copyright &copy; 2020 by GrabiT! All rights belongs to GrabiT!</p>
             </div>
         </footer>
     )

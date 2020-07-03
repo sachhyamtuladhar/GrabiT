@@ -4,15 +4,18 @@ const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: false,
     isLoading: false,
-    user: null
+    user: null,
+    error: null,
 }
 
 export default (state=initialState, action) => {
     switch(action.type){
         case actionTypes.USER_LOADING:
+        case actionTypes.AUTH_START:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+                error: null
             }
 
         case actionTypes.USER_LOADED:
@@ -20,6 +23,7 @@ export default (state=initialState, action) => {
                 ...state,
                 isAuthenticated: true,
                 isLoading: false,
+                error: null,
                 user: {
                     ...state.user,
                     ...action.payload
@@ -34,8 +38,8 @@ export default (state=initialState, action) => {
                 ...state,
                 ...action.payload, 
                 isAuthenticated: true,
-                isLoading: false
-               
+                isLoading: false,
+                error: null,
             }
 
         case actionTypes.LOGIN_FAIL:
@@ -48,7 +52,8 @@ export default (state=initialState, action) => {
                 token: localStorage.getItem('token'),
                 isAuthenticated: false,
                 isLoading: false,
-                user: null
+                user: null,
+                error: action.error
             }
 
         default:

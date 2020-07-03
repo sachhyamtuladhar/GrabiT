@@ -9,21 +9,19 @@
     font: inherit;
     padding: 10px;
     margin: 10px;
-    font-weight: bold;
     display: inline-flex;
     
+    &:disabled{
+        color: gray !important; 
+        cursor: not-allowed  !important;
+    }
 
     
 }
 
-.Disabled{
-    color: gray ; 
-    cursor: not-allowed  ;
-}
 
-.Button:first-of-type {
-    margin-left: 0;
-}
+
+
 
 .Success {
     color: #5C9210;
@@ -47,6 +45,8 @@
     margin: 0;
     text-align: center;
     display: block;
+    font-weight: bold;
+
 
     
 }
@@ -54,7 +54,6 @@
 .HeaderSection{
     display: inline-flex;
     
-    font-weight: 300;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: $secondaryColor;
@@ -76,3 +75,10 @@
         transition: background-color 0.3s, color 0.3s, font-size 0.3s;
     }
 }
+
+.Disabled{
+    background: none; 
+    background-color: gray; 
+    cursor: not-allowed ;
+}
+

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {  Route } from 'react-router-dom'
+import {  Route, Switch } from 'react-router-dom'
 
 
 import Login from './containers/Login'
@@ -13,14 +13,11 @@ import Layout from './hoc/Layout';
 import './App.scss'
 
 import HeaderSection from './components/HeaderSection/HeaderSection';
+import NotFound from './containers/NotFound';
 
 
 
 class App extends Component {
-  state={
-    showNavBar: false
-  }
-
   // componentDidMount(){
   //   window.addEventListener("scroll", (e)=>{
   //     let hs = document.querySelector('#headerSection')
@@ -41,9 +38,12 @@ class App extends Component {
           <div className="App" >
             <Layout>
               <HeaderSection />
-              <Route path="/login" exact component={Login}/>
-              <Route path="/register" exact component={SignUp} />
-              <Route path="/" exact component={Home} />
+              <Switch>
+                  <Route path="/login" exact component={Login}/>
+                  <Route path="/register" exact component={SignUp} />
+                  <Route path="/" exact component={Home} />
+                  <Route path="/" component={NotFound} />
+              </Switch>
             </Layout>
           </div>
         

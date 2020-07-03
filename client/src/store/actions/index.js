@@ -1,5 +1,6 @@
 export {
-
+    signup,
+    login
 } from './authActions'
 
 export {

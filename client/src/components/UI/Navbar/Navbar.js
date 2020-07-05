@@ -73,7 +73,20 @@ class Example extends Component {
                 <DropdownToggle nav caret>
                   <h5 className="d-inline mr-2">Welcome {this.props.user.name}!</h5>
                 </DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu className={styles.DropdownMenu} right>
+                  
+                    <NavLink activeClassName={styles.active} 
+                      to='/buy'
+                    >
+                      Buy
+                    </NavLink>
+                 
+                    <NavLink activeClassName={styles.active} 
+                      to='/sell'
+                    >
+                      Sell
+                    </NavLink>
+                  
                   <DropdownItem onClick={this.props.onLogout}>
                     Logout
                   </DropdownItem>

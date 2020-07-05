@@ -6,7 +6,7 @@ import {
 
 
 import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
+import {withRouter, Link, Redirect} from 'react-router-dom'
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -152,6 +152,9 @@ class LoginForm extends Component {
 
 
     render(){
+        let redirect = null
+        if(this.props.user)
+            redirect = <Redirect to='/' />
 
         const formFields = Object.keys(this.state.loginForm).map(
             (inp)=>(
@@ -184,6 +187,7 @@ class LoginForm extends Component {
 
         return (      
                 <Form className="form mb-5">
+                    {redirect}
                     <div className="d-flex flex-column">
                         {error}
                         <div className="shadow  mb-5 bg-white rounded p-0">
@@ -200,7 +204,8 @@ class LoginForm extends Component {
 
 const mapStatetoProps = state =>{
     return {
-        error: state.auth.error
+        error: state.auth.error,
+        user: state.auth.user
     }
 }
 

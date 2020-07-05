@@ -11,10 +11,7 @@
     margin: 10px;
     display: inline-flex;
     
-    &:disabled{
-        color: gray !important; 
-        cursor: not-allowed  !important;
-    }
+
 
     
 }
@@ -78,7 +75,9 @@
 
 .Disabled{
     background: none; 
-    background-color: gray; 
-    cursor: not-allowed ;
+    background-color: #ddd; 
+    color: #aaa;
+    border-color: gray ;
+    cursor: default ;
 }
 

@@ -17,8 +17,6 @@ const Plans = () => {
         <section className={styles.sectionPlans} id="signup">
             <div className="row">
                 <h2>Start eating healthy today</h2>
-            </div>
-            <div className="row">
                 <div className="col-md-4">
                     <div className={styles.planBox}>
                         <div>

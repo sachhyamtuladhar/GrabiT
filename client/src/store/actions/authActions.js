@@ -109,6 +109,12 @@ export const storeToken = (token, user) => {
     }
 }
 
+export const clearAuthError = () => {
+    return {
+        type: actionTypes.CLEAR_ERRORS
+    }
+}
+
 
 export const logOut = () => (dispatch, getState) =>{
     // get token from local storage 

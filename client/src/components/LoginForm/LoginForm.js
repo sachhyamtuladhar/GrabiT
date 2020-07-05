@@ -60,6 +60,10 @@ class LoginForm extends Component {
         loading: false
     }
 
+    componentDidMount(){
+        this.props.onClearError();
+    }
+
     submitHandler = (e) => {
         this.setState({
             loading: true
@@ -203,6 +207,7 @@ const mapStatetoProps = state =>{
 const mapDispatchtoProps = dispatch => {
     return {
         onLogin: (history, formdata) => dispatch(actionCreators.login(history, formdata)),
+        onClearError: () => dispatch(actionCreators.clearAuthError())
     }
 }
 

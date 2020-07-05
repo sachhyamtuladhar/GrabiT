@@ -9,7 +9,7 @@ import {
 import CustomInput from '../UI/Input/Input'
 import Button from '../UI/Button/Button'
 
-const submitHandler = (e, submitForm, formInputs) => {
+const submitHandler = (submitForm, formInputs, e) => {
   
 
     e.preventDefault()
@@ -68,7 +68,7 @@ const inputChangeHandler = (event, inputIdentifier, upDateForm, formInputs) => {
     })
     
 
-    upDateForm(upDatedForm)
+    upDateForm(upDatedForm, formIsValid)
 
 
 }
@@ -81,13 +81,15 @@ const form = props => {
                 <Label>{props.formInputs[inp].title}</Label>
                 <CustomInput
                     type={props.formInputs[inp].type}
-                    name={props.formInputs[inp].name}
-                    id={props.formInputs[inp].id}
-                    placeholder={props.formInputs[inp].placeholder}
+                    
+                    config={{
+                        name: props.formInputs[inp].name,
+                        id:props.formInputs[inp].id,
+                        placeholder: props.formInputs[inp].placeholder
+                    }}
 
                     invalid={!props.formInputs[inp].validity}
                     touched={props.formInputs[inp].touched}
-
                    
                     changeHandler={(e)=>inputChangeHandler(e, inp, props.updateForm, props.formInputs)}
                 />
@@ -98,10 +100,15 @@ const form = props => {
     return (      
         <Container className="App">
             <h2>{props.title}</h2>
+            {props.error ? <div className="alert alert-danger">{props.error.message}</div> : null }
             <Form className="form">
                 {formFields}
                 <div className="d-flex justify-content-around">
-                    <Button click={(e)=>submitHandler(e, props.submitForm, props.formInputs)}  type="Success">Submit</Button>
+                    <Button 
+                        click={submitHandler.bind(null, props.submitForm, props.formInputs)}  
+                        type="Success"
+                        disabled={!props.formIsValid}
+                    >Submit</Button>
                     <Button click={props.onCancel}  type="Danger">Cancel</Button>
                 </div>
             </Form>

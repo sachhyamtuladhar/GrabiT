@@ -8,7 +8,7 @@ import styles from './Footer.module.scss'
 const Footer = () => {
     return (
         <footer className={styles.Footer}>
-            <div className="d-flex justify-content-around pt-3">
+            <div className="d-flex justify-content-around p-3">
                 <div>
                     <ul className={styles.footerNav}>
                         <li><a href="#">About us</a></li>

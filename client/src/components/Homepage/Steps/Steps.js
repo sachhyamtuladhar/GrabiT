@@ -38,9 +38,10 @@ const Steps = props => {
                             <div>3</div>
                             <p>	Enjoy your meal after less than 20 minutes. See you the next time!</p>
                         </div>
-                        
-                        <a href="#" className={styles.btnApp}><img src={downloadApp} alt="App Store Button" /></a>
-                        <a href="#" className={styles.btnApp}><img src={downloadAppAndroid} alt="Play Store Button" /></a>
+                        <div className="d-flex">
+                            <a href="#" className={styles.btnApp}><img src={downloadAppAndroid} alt="Play Store Button" /></a>
+                            <a href="#" className={styles.btnApp}><img src={downloadApp} alt="App Store Button" /></a>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -60,9 +60,14 @@ class SignUp extends Component {
  
     }
 
-    updateForm = (updatedForm) => {
+    componentDidMount(){
+        this.props.onClearError();
+    }
+
+    updateForm = (updatedForm, formValidity) => {
         this.setState({
-            signupForm: updatedForm
+            signupForm: updatedForm,
+            formIsValid: formValidity
         })
     }
     
@@ -73,6 +78,8 @@ class SignUp extends Component {
                         formInputs = {this.state.signupForm}
                         onCancel = {this.props.history.goBack}
                         title="Register"
+                        error={this.props.error}
+                        formIsValid = {this.state.formIsValid}
                     />
 
         if(this.props.loading){
@@ -82,7 +89,7 @@ class SignUp extends Component {
             <div className="d-flex justify-content-center mt-5">
                 
 
-                <div className='card mb-5' >
+                <div className='card mb-5 custom-form-width' >
                         <div className="card-body">
                             {form}
                             <hr />
@@ -105,13 +112,15 @@ class SignUp extends Component {
 
 const mapDispatchtoProps = dispatch => {
     return {
-        onSignup: (history, formdata) => dispatch(actionCreators.signup(history, formdata)),
+        onClearError: () => dispatch(actionCreators.clearAuthError()),
+        onSignup: (history, formdata) => dispatch(actionCreators.signup(history, formdata))
     }
 }
 
 const mapStatetoProps = state => {
     return{
-        loading: state.auth.isLoading
+        loading: state.auth.isLoading,
+        error: state.auth.error
     }
 }
 

@@ -55,6 +55,12 @@ export default (state=initialState, action) => {
                 user: null,
                 error: action.error
             }
+            
+        case actionTypes.CLEAR_ERRORS :
+            return {
+                ...state,
+                error: null
+            }
 
         default:
             return state

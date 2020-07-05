@@ -14,44 +14,44 @@ import img8 from '../../../assets/img/8.jpg'
 const Meals = () => (
     <section className="section-meals">
         <ul className={styles.showcase}>
-            <li>
+            <li className='col-sm-6 col-md-3 px-0'>
                 <figure className={`${styles.pic} clear-fix`}>
                     <img src={img1} alt= "Korean bibimbap with egg and vegetables" />
                 </figure>
             </li>
-            <li>
+            <li className='col-sm-6 col-md-3 px-0'>
                 <figure className={styles.pic}>
                     <img src={img2} alt= "Simple italian pizza with cherry tomatoes" />
                 </figure>
             </li>
-            <li>
+            <li className='col-sm-6 col-md-3 px-0'>
                 <figure  className={styles.pic}>
                     <img src={img3} alt= "Chicken breast steak with vegetables " />
                 </figure>
             </li>
-            <li>
+            <li className='col-sm-6 col-md-3 px-0'>
                 <figure  className={styles.pic}>
                     <img src={img4} alt= "Autumn pumpkin soup" />
                 </figure>
             </li>
         </ul>
         <ul className={`${styles.showcase} clear-fix`}>
-            <li>
+            <li className='col-sm-6 col-md-3 px-0'>
                 <figure  className={styles.pic}>
                     <img src={img5} alt= "Paleo beef steak with vegetables" />
                 </figure>
             </li>
-            <li>
+            <li className='col-sm-6 col-md-3 px-0'>
                 <figure  className={styles.pic}>
                     <img src={img6} alt= "Simple italian pizza with cherry tomatoes" />
                 </figure>
             </li>
-            <li>
+            <li className='col-sm-6 col-md-3 px-0'>
                 <figure  className={styles.pic}>
                     <img src={img7} alt= "Healthy baguette with egg and vegetables" />
                 </figure>
             </li>
-            <li>
+            <li className='col-sm-6 col-md-3 px-0'>
                 <figure  className={styles.pic}>
                     <img src={img8} alt= "Granola with cherries and strawberries" />
                 </figure>

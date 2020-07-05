@@ -12,7 +12,9 @@ import Plans from '../components/Homepage/Plans/Plans'
 class Home extends Component {
     state={
         isFeaturesVisible: false,
-        isStepsVisible: false
+        isStepsVisible: false,
+        isCitiesVisible: false,
+        isTestimonialsVisible: false
     }
 
     FeaturesEnter = () => {
@@ -21,10 +23,21 @@ class Home extends Component {
         })
     }
     
-
     StepsEnter = () => {
         this.setState({
             isStepsVisible: true
+        })
+    }
+
+    CitiesEnter = () => {
+        this.setState({
+            isCitiesVisible: true
+        })
+    }
+   
+    TestimonialsEnter = () => {
+        this.setState({
+            isTestimonialsVisible: true
         })
     }
     
@@ -35,8 +48,8 @@ class Home extends Component {
                     <Features onVisible={this.FeaturesEnter} isVisible={this.state.isFeaturesVisible} />
                     <Meals />
                     <Steps onVisible={this.StepsEnter} isVisible={this.state.isStepsVisible}/>
-                    <Cities />
-                    <Testimonials />
+                    <Cities onVisible={this.CitiesEnter} isVisible={this.state.isCitiesVisible}/>
+                    <Testimonials onVisible={this.TestimonialsEnter} isVisible={this.state.isTestimonialsVisible}/>
                     <Plans />
             </div>)
         

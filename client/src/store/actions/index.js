@@ -1,6 +1,7 @@
 export {
     signup,
-    login
+    login,
+    clearAuthError
 } from './authActions'
 
 export {

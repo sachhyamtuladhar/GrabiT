@@ -18,21 +18,37 @@ const HeaderSection = (props) => {
     let loginButtons = null
 
     
-    if(props.location.pathname === '/' && !props.user)
-        loginButtons = (<div className="d-flex">
-            <Link
-                to= "/login" 
-                className={styles.defaultLink}  
+    if(props.location.pathname === '/' )
+        if(props.user)
+            loginButtons = (<div className="d-flex">
+                <Link
+                    to= "/buy" 
+                    className={styles.defaultLink}  
+                    >
+                    <Button type="HeaderSection">Shop</Button>
+                </Link>
+                <Link
+                    to= "/sell"   
+                    className={styles.defaultLink}  
                 >
-                <Button type="HeaderSection">Login</Button>
-            </Link>
-            <Link
-                to= "/register"   
-                className={styles.defaultLink}  
-            >
-                <Button type="HeaderSection">Register</Button>
-            </Link>
-        </div>)
+                    <Button type="HeaderSection">Sell</Button>
+                </Link>
+            </div>)
+        else
+            loginButtons = (<div className="d-flex">
+                <Link
+                    to= "/login" 
+                    className={styles.defaultLink}  
+                    >
+                    <Button type="HeaderSection">Login</Button>
+                </Link>
+                <Link
+                    to= "/register"   
+                    className={styles.defaultLink}  
+                >
+                    <Button type="HeaderSection">Register</Button>
+                </Link>
+            </div>)
 
     return (
         <Waypoint onEnter={props.onEnter} onLeave={props.onLeave} topOffset="15%">

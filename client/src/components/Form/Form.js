@@ -43,6 +43,10 @@ const chackValidity = (value, rules) => {
         isValid = value.length < rules.maxLength && isValid;
     }
 
+    if(rules.isNumber){
+        isValid = !isNaN(value) && isValid;
+    }
+
     if(rules.isEmail){
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()\\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         isValid = re.test(String(value).toLowerCase());
@@ -109,7 +113,10 @@ const form = props => {
                         type="Success"
                         disabled={!props.formIsValid}
                     >Submit</Button>
-                    <Button click={props.onCancel}  type="Danger">Cancel</Button>
+                    {props.onCancel ? 
+                        <Button click={props.onCancel}  type="Danger">Cancel</Button>
+                        : null
+                    }
                 </div>
             </Form>
        </Container>

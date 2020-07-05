@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 import * as actionCreators from '../store/actions'
 
@@ -72,6 +72,11 @@ class SignUp extends Component {
     }
     
     render(){
+        let redirect = null
+
+        if(this.props.user)
+            redirect = <Redirect to='/' />
+
         let form = <Form 
                         updateForm={this.updateForm}
                         submitForm = {(formData)=>this.props.onSignup(this.props.history, formData)}
@@ -87,7 +92,7 @@ class SignUp extends Component {
         }
         return (
             <div className="d-flex justify-content-center mt-5">
-                
+                {redirect}
 
                 <div className='card mb-5 custom-form-width' >
                         <div className="card-body">
@@ -120,7 +125,8 @@ const mapDispatchtoProps = dispatch => {
 const mapStatetoProps = state => {
     return{
         loading: state.auth.isLoading,
-        error: state.auth.error
+        error: state.auth.error,
+        user: state.auth.user
     }
 }
 

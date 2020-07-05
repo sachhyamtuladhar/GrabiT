@@ -78,7 +78,9 @@
 
 .Disabled{
     background: none; 
-    background-color: gray; 
+    background-color: #ddd; 
+    color: #aaa;
+    border-color: gray ;
     cursor: not-allowed ;
 }
 

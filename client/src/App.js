@@ -3,17 +3,19 @@ import React, {Component} from 'react';
 import {  Route, Switch } from 'react-router-dom'
 
 
+import Layout from './hoc/Layout';
+import HeaderSection from './components/HeaderSection/HeaderSection';
 import Login from './containers/Login'
 import Home from './containers/Home'
 import SignUp from './containers/SignUp'
+import Buy from './containers/Buy'
+import Sell from './containers/Sell'
+import NotFound from './containers/NotFound';
+
 
 import 'bootstrap/dist/css/bootstrap.css';
-import Layout from './hoc/Layout';
-
 import './App.scss'
 
-import HeaderSection from './components/HeaderSection/HeaderSection';
-import NotFound from './containers/NotFound';
 
 
 
@@ -40,6 +42,8 @@ class App extends Component {
               <HeaderSection />
               <Switch>
                   <Route path="/login" exact component={Login}/>
+                  <Route path="/buy" exact component={Buy} />
+                  <Route path="/sell" exact component={Sell} />
                   <Route path="/register" exact component={SignUp} />
                   <Route path="/" exact component={Home} />
                   <Route path="/" component={NotFound} />

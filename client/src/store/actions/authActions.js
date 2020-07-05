@@ -151,7 +151,7 @@ export const login = (history, formData) => (dispatch, getState) => {
         .then(res=>{
 
             dispatch(loginSuccess(res.data.token, res.data.user))
-            history.push('/')
+            history.goBack()
         })
         .catch(e=>{
             console.log('error:', e.response.data)
@@ -166,7 +166,7 @@ export const signup = (history, formData) => (dispatch, getState) => {
         .then(res=>{
 
             dispatch(signupSuccess(res.data.token, res.data.user))
-            history.push('/')
+            history.goBack()
         })
         .catch(e=>{
             console.log('error:', e.response.data)

@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const uniqueValidator = require('mongoose-unique-validator')
 
-
+const Item = require('./item')
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -56,11 +56,11 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 })
 
-// userSchema.virtual('tasks', {
-//     ref: 'Task',
-//     localField: '_id',
-//     foreignField: 'owner'
-// })
+userSchema.virtual('items', {
+    ref: 'Item',
+    localField: '_id',
+    foreignField: 'owner'
+})
 
 userSchema.methods.toJSON = function () {
     const user = this
@@ -105,12 +105,12 @@ userSchema.pre('save', async function(next){
     }
 })
 
-// delete tasks wh user delete
-// userSchema.pre('delete', async function(next){
-//     const user = this
-//     Task.deleteMany({owner: user._id})
-//     next()
-// })
+// delete tasks when user delete
+userSchema.pre('delete', async function(next){
+    const user = this
+    Item.deleteMany({owner: user._id})
+    next()
+})
 
 userSchema.plugin(uniqueValidator)
 

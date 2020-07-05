@@ -1,0 +1,84 @@
+@import '../../../scss/colors.scss';
+
+.Button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    display: inline-flex;
+    
+    &:disabled{
+        color: gray !important; 
+        cursor: not-allowed  !important;
+    }
+
+    
+}
+
+
+
+
+
+.Success {
+    color: #5C9210;
+    border: 2px solid #5C9210;
+    
+    
+}
+
+.Danger {
+    color: #944317;
+    border: 2px solid #944317;
+}
+
+.Login{
+    color: white;
+    background: linear-gradient(90deg, $primaryColorLight 33%, $accentColor 100%);
+    width: 100%;
+    border-radius: .5rem;
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    margin: 0;
+    text-align: center;
+    display: block;
+    font-weight: bold;
+
+
+    
+}
+
+.HeaderSection{
+    display: inline-flex;
+    
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: $secondaryColor;
+    color: #ddd;
+    font-size: 1.2rem;
+    height: 3rem;
+    width: 8rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: default;
+    transition: background-color 0.4s, color 0.4s, font-size 0.4s;
+
+    &:hover{
+        text-decoration: none;
+        background-color: $secondaryColorLight;
+        color: #fff;
+        font-size: 1.4rem;
+        transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+    }
+}
+
+.Disabled{
+    background: none; 
+    background-color: gray; 
+    cursor: not-allowed ;
+}
+

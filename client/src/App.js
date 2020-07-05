@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { Provider } from 'react-redux'
 
-import { BrowserRouter, Route } from 'react-router-dom'
+import {  Route, Switch } from 'react-router-dom'
 
 
 import Login from './containers/Login'
@@ -9,29 +8,45 @@ import Home from './containers/Home'
 import SignUp from './containers/SignUp'
 
 import 'bootstrap/dist/css/bootstrap.css';
-import store from './store/store'
 import Layout from './hoc/Layout';
 
-import {loadUser} from './store/actions/authActions'
+import './App.scss'
+
+import HeaderSection from './components/HeaderSection/HeaderSection';
+import NotFound from './containers/NotFound';
+
+
 
 class App extends Component {
-
-
-
+  // componentDidMount(){
+  //   window.addEventListener("scroll", (e)=>{
+  //     let hs = document.querySelector('#headerSection')
+  //     if(window.scrollY > (hs.offsetHeight - 120) )
+  //       this.setState({
+  //         showNavBar: true
+  //       })
+  //     else
+  //       this.setState({
+  //         showNavBar: false
+  //       })
+  //   });
+  // }
 
   render(){
     return (
-      <Provider store={store}>
-        <BrowserRouter>
-          <div className="App">
+     
+          <div className="App" >
             <Layout>
-              <Route path="/login" exact component={Login}/>
-              <Route path="/register" exact component={SignUp} />
-              <Route path="/" exact component={Home} />
+              <HeaderSection />
+              <Switch>
+                  <Route path="/login" exact component={Login}/>
+                  <Route path="/register" exact component={SignUp} />
+                  <Route path="/" exact component={Home} />
+                  <Route path="/" component={NotFound} />
+              </Switch>
             </Layout>
           </div>
-        </BrowserRouter>
-      </Provider>
+        
     );
 
   }

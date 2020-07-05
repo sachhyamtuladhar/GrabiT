@@ -4,16 +4,21 @@ import styles from './Input.module.scss'
 
 const input = (props) => {
     let inputElement = null
-
+    
     const inputClasses = [styles.InputElement]
+    
+    if(props.login)
+        inputClasses.push(styles.Login)
 
     if(props.invalid &&  props.touched){
         inputClasses.push(styles.Invalid)
     }
 
+
+
     switch(props.inputtype){
         case('input'):
-            inputElement = <input className={inputClasses.join(' ')} {...props.config} value={props.value} onChange={props.changeHandler}/>
+            inputElement = <input className={inputClasses.join(' ')} {...props.config}  onChange={props.changeHandler}/>
         break
 
         case('textarea'):
@@ -41,7 +46,6 @@ const input = (props) => {
 
     return (
         <div className={styles.Input}>
-            <label className={styles.Label}>{props.label}</label>
             {inputElement}
         </div>
     )

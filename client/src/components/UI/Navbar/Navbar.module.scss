@@ -1,0 +1,53 @@
+@import '../../../scss/colors.scss';
+
+.Navbar{
+    background-color:  $primaryColor;
+    color: white !important;
+    opacity: 0;
+    transform: translateY(5vh);
+    visibility: hidden;
+    transition: opacity 0.6s ease-out, transform 0.3s ease-out;
+    will-change: opacity, visibility;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &.isVisible {
+        opacity: 1;
+        transform: none;
+        visibility: visible;
+        
+
+    }
+
+ 
+
+
+    a{
+        color: white !important;
+        display: inline-block;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+        font-size: 1rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    &.sticky{
+        position: fixed;
+        width: 100%;
+    }
+
+}
+
+.active{
+   border-bottom: 2px solid white;
+   font-weight: bold;
+}
+
+
+.userDropdown{
+    list-style: none; 
+    margin-bottom: 0;
+}

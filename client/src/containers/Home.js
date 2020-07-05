@@ -1,70 +1,46 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
-import { connect } from 'react-redux'
 
-import { Link } from 'react-router-dom'
+import Features from '../components/Homepage/Features/Features'
+import Meals from '../components/Homepage/Meals/Meals'
+import Steps from '../components/Homepage/Steps/Steps'
+import Cities from '../components/Homepage/Cities/Cities'
+import Testimonials from '../components/Homepage/Testimonials/Testimonials'
+import Plans from '../components/Homepage/Plans/Plans'
 
-import * as actionCreators from '../store/actions/authActions'
 
 class Home extends Component {
+    state={
+        isFeaturesVisible: false,
+        isStepsVisible: false
+    }
 
-    componentDidMount(){
-        console.log('did mount')
-        this.props.loadUser()
+    FeaturesEnter = () => {
+        this.setState({
+            isFeaturesVisible: true
+        })
+    }
+    
+
+    StepsEnter = () => {
+        this.setState({
+            isStepsVisible: true
+        })
     }
     
 
     render() {
-        if(this.props.user && this.props.user.data)
-            console.log(this.props.user.data.name)
-        let home = (
-            <Fragment>
-                <Link 
-                    to='/login'
-                    className="btn btn-success"
-                    >
-                    Login
-                </Link>
-                <Link 
-                    to='/register'
-                    className="btn btn-success"
-                    >
-                    Signup
-                </Link>
-            </Fragment>
-        )
-        
-        if(this.props.user && this.props.user.data)
-            home = (
-                <Fragment>
-                    <h1>Welcome {this.props.user.data.name }</h1>
-                    <div className = "btn btn-danger" onClick={this.props.onLogout}>Logout</div>        
-                </Fragment>
-            )
-
-
-
-
         return (
-            <div className="d-flex mt-5 justify-content-around">
-                {home}
+            <div className="mt-3">
+                    <Features onVisible={this.FeaturesEnter} isVisible={this.state.isFeaturesVisible} />
+                    <Meals />
+                    <Steps onVisible={this.StepsEnter} isVisible={this.state.isStepsVisible}/>
+                    <Cities />
+                    <Testimonials />
+                    <Plans />
             </div>)
         
     }
 }
 
-const mapStatetoProps = state => {
-    return{
-        user: state.auth.user,
-    }
-}
-
-const mapDispatchtoProps = dispatch => {
-    return {
-        loadUser: () => dispatch(actionCreators.loadUser()),
-        onLogout: () => dispatch(actionCreators.logOut()),
-    }
-}
-
-
-export default connect(mapStatetoProps, mapDispatchtoProps)(Home)
+export default Home

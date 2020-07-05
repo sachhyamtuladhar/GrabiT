@@ -1,0 +1,45 @@
+.cityFeature{
+    margin-bottom: 0.3rem;
+    font-size: 1.1rem;
+    
+    a{
+        color: #e74c3c;
+        text-decoration: none;
+        border-bottom: solid 1px #e74c3c;
+        transition: border-bottom 0.2s, color 0.2s;
+
+        &:hover, &:active{
+            color:#c0392b;
+            text-decoration: none;
+            border-bottom: solid 1px transparent;
+        }
+    }
+}
+
+.sectionCites{ 
+    background-color: white;
+
+    .box{
+        font-size: 90%x;
+        margin-bottom: 2rem;
+        align-items: center;
+
+        img{
+            width: 100%;
+            margin-bottom: 0.8rem;
+        }
+    }
+
+    .iconSmall{
+        display:inline-block;
+        width: 1.1rem !important;
+        text-align: center;
+        color: #c0392b;
+        height: 1.8rem;
+    
+        vertical-align: bottom;
+        margin-right: 0.8rem;
+        margin-left: 0.8rem;
+     
+    }
+}
